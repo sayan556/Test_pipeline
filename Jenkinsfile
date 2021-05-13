@@ -27,7 +27,7 @@ pipeline {
         
         stage('Put file to server') {
             steps{
-             sh 'scp index.html s@192.168.1.106:/var/www/html
+             sh 'sshPut remote: remote, from: 'index.html', into: '/var/www/html''
             }
          }
  
