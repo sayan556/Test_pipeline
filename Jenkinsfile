@@ -1,8 +1,15 @@
+def remote = [:]
+remote.name = 's-VirtualBox'
+remote.host = '192.168.1.106'
+remote.user = 's'
+remote.password = 's'
+remote.allowAnyHosts = true
 pipeline { 
     agent any 
    // options {
        // skipStagesAfterUnstable()
  //   }
+ 
     stages {
         stage('Gitclone') { 
             steps { 
@@ -17,18 +24,11 @@ pipeline {
                 }
             }
         }
-        stage("SSH Into Server") {
-                def remote = [:]
-                remote.name = 's-VirtualBox'
-                remote.host = '192.168.1.106'
-                remote.user = 's'
-                remote.password = 's'
-                remote.allowAnyHosts = true
-                stage('Put file to server') {
-                    sshPut remote: remote, from: 'index.html', into: '/var/www/html'
-                   
-        }
-        }
+        
+        stage('Put file to server') {
+             sshPut remote: remote, from: 'index.html', into: '/var/www/html'
+         }
+ 
         //stage('Deploy'){
             //steps {
               //  sh 'mv index.html /var/www/html'
