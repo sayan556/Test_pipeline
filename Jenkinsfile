@@ -10,17 +10,38 @@ pipeline {
             }
             post {
                 success {
-                    echo 'Compile stage successful'
+                    echo 'Clone stage successful'
                 }
                 failure {
-                    echo 'Compile stage failed'
+                    echo 'Clone stage failed'
                 }
             }
         }
-        stage('Deploy'){
-            steps {
-                sh 'mv index.html /var/www/html'
+        stage("SSH Into Server") {
+            def remote = [:]
+            remote.name = 's'
+            remote.host = '192.168.1.106'
+            remote.user = 's'
+            remote.password = 's'
+            remote.allowAnyHosts = true
+        }
+        stage('Put file to server') {
+            steps{
+            sshPut remote: remote, from: 'index.html', into: '/var/www/html'
             }
         }
+        //stage('Deploy'){
+            //steps {
+              //  sh 'mv index.html /var/www/html'
+          //  }
+          //  post {
+              //  success {
+                 //   echo 'Deploy stage successful'
+              //  }
+              //  failure {
+                //    echo 'Deploy stage failed'
+               // }
+            //}
+       // }
     }
 }
