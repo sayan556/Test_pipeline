@@ -24,6 +24,12 @@ pipeline {
                 }
             }
         }
+        stage('delete file to server') {
+            steps{
+                sshRemove remote: remote, path: '/var/www/html/index.html'
+
+            }
+         }
         
         stage('Put file to server') {
             steps{
