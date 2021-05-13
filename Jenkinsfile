@@ -27,7 +27,7 @@ pipeline {
         
         stage('Put file to server') {
             steps{
-             sh 'pwd'
+             sh 'scp index.html s@192.168.1.106:/var/www/html
             }
          }
  
