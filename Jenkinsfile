@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Gitclone') { 
             steps { 
-                 git credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/sayan556/jenkins.git'
+                git branch: 'main', credentialsId: '5a22a18e-6011-429e-971f-9cb1d3b24d20', url: 'https://github.com/sayan556/jenkins.git'
             }
         }
         stage('Deploy'){
