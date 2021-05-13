@@ -18,18 +18,15 @@ pipeline {
             }
         }
         stage("SSH Into Server") {
-            steps{
                 def remote = [:]
                 remote.name = 's-VirtualBox'
                 remote.host = '192.168.1.106'
                 remote.user = 's'
                 remote.password = 's'
                 remote.allowAnyHosts = true
-            }
                 stage('Put file to server') {
-                    steps{
-                         sshPut remote: remote, from: 'index.html', into: '/var/www/html'
-                    }
+                    sshPut remote: remote, from: 'index.html', into: '/var/www/html'
+                   
         }
         }
         //stage('Deploy'){
