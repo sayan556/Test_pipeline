@@ -1,8 +1,8 @@
 def remote = [:]
 remote.name = 's-VirtualBox'
 remote.host = '192.168.1.106'
-remote.user = 's'
-remote.password = 's'
+remote.user = 'root'
+remote.password = 'root'
 remote.allowAnyHosts = true
 pipeline { 
     agent any 
