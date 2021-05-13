@@ -26,11 +26,11 @@ pipeline {
                 remote.password = 's'
                 remote.allowAnyHosts = true
             }
+                stage('Put file to server') {
+                    steps{
+                         sshPut remote: remote, from: 'index.html', into: '/var/www/html'
+                    }
         }
-        stage('Put file to server') {
-            steps{
-                sshPut remote: remote, from: 'index.html', into: '/var/www/html'
-            }
         }
         //stage('Deploy'){
             //steps {
