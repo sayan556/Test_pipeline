@@ -27,7 +27,7 @@ pipeline {
         
         stage('Put file to server') {
             steps{
-             sshCommand remote: remote, command: "ls -l"
+             sh 'pwd'
             }
          }
  
