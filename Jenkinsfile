@@ -19,7 +19,7 @@ pipeline {
         }
         stage("SSH Into Server") {
             def remote = [:]
-            remote.name = 's'
+            remote.name = 's-VirtualBox'
             remote.host = '192.168.1.106'
             remote.user = 's'
             remote.password = 's'
