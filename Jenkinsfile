@@ -27,7 +27,7 @@ pipeline {
         
         stage('Put file to server') {
             steps{
-             sshPut remote: remote, from: '/var/lib/jenkins/workspace/testpipeline@2/index.html', into: '.'
+             sshCommand remote: remote, command: "ls -l"
             }
          }
  
